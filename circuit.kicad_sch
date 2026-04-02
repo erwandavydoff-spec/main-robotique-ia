@@ -1,0 +1,27 @@
+
+(kicad_sch (version 20211014) (generator Copilot)
+
+  (paper "A4")
+
+  (symbol (lib_id "Arduino:Arduino_Uno_R3")
+    (at 50 50)
+    (unit 1) (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 50 40))
+  )
+
+  ; Vibration sensors
+  (symbol (lib_id "Sensor:Piezo") (at 120 30) (property "Reference" "VIB1"))
+  (symbol (lib_id "Sensor:Piezo") (at 120 45) (property "Reference" "VIB2"))
+  (symbol (lib_id "Sensor:Piezo") (at 120 60) (property "Reference" "VIB3"))
+  (symbol (lib_id "Sensor:Piezo") (at 120 75) (property "Reference" "VIB4"))
+  (symbol (lib_id "Sensor:Piezo") (at 120 90) (property "Reference" "VIB5"))
+
+  ; Flex sensors
+  (symbol (lib_id "Device:R_Potentiometer") (at 170 30) (property "Reference" "FS1"))
+  (symbol (lib_id "Device:R_Potentiometer") (at 170 45) (property "Reference" "FS2"))
+  (symbol (lib_id "Device:R_Potentiometer") (at 170 60) (property "Reference" "FS3"))
+  (symbol (lib_id "Device:R_Potentiometer") (at 170 75) (property "Reference" "FS4"))
+  (symbol (lib_id "Device:R_Potentiometer") (at 170 90) (property "Reference" "FS5"))
+  (symbol (lib_id "Device:R_Potentiometer") (at 170 105) (property "Reference" "FS6"))
+
+)
