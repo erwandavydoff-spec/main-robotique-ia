@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Main Robotique | Contact</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Main Robotique</span>
+        </div>
+
+        <button class="icon-btn burger" type="button" aria-label="Ouvrir le menu" aria-controls="site-nav" aria-expanded="false">
+          <span class="burger__lines" aria-hidden="true"></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+          <a class="nav-link" href="./index.html">Accueil</a>
+          <a class="nav-link" href="./presentation.html">Présentation</a>
+          <a class="nav-link" href="./fonctionnement.html">Fonctionnement</a>
+          <a class="nav-link" href="./materiel.html">Matériel</a>
+          <a class="nav-link" href="./logiciels.html">Logiciels</a>
+          <a class="nav-link" href="./demo.html">Démo</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn theme-toggle" type="button" aria-label="Basculer le thème" title="Thème">
+            <span aria-hidden="true" class="theme-toggle__icon">☾</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenu" class="container page">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Un retour, une idée ou une collaboration ? Écris-moi.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Envoyer un message</h3>
+          <form id="contact-form" class="form">
+            <label class="field">
+              <span>Nom</span>
+              <input name="name" type="text" autocomplete="name" placeholder="Votre nom" required />
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" placeholder="vous@exemple.com" required />
+            </label>
+
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+            <p class="muted small" style="margin-top: 0.2rem">
+              Pas de backend : l’envoi ouvre ton client mail via `mailto:`.
+            </p>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Liens utiles</h3>
+          <p class="muted">
+            Liens vers les fichiers dans `docs/` (à adapter si besoin selon ton hébergement).
+          </p>
+          <div class="link-grid">
+            <a class="link-card" href="../docs/dectection_mouvement.py">Python : détection de gestes</a>
+            <a class="link-card" href="../docs/C code include Servo h.c">Arduino : pilotage des servos</a>
+            <a class="link-card" href="../docs/cahier des charges.docx">Cahier des charges (DOCX)</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Main Robotique</span>
+        <span class="muted">Site vitrine front-end en français</span>
+      </div>
+    </footer>
+  </body>
+</html>
+

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Main Robotique | Fonctionnement</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Main Robotique</span>
+        </div>
+
+        <button class="icon-btn burger" type="button" aria-label="Ouvrir le menu" aria-controls="site-nav" aria-expanded="false">
+          <span class="burger__lines" aria-hidden="true"></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+          <a class="nav-link" href="./index.html">Accueil</a>
+          <a class="nav-link" href="./presentation.html">Présentation</a>
+          <a class="nav-link" href="./fonctionnement.html">Fonctionnement</a>
+          <a class="nav-link" href="./materiel.html">Matériel</a>
+          <a class="nav-link" href="./logiciels.html">Logiciels</a>
+          <a class="nav-link" href="./demo.html">Démo</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn theme-toggle" type="button" aria-label="Basculer le thème" title="Thème">
+            <span aria-hidden="true" class="theme-toggle__icon">☾</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenu" class="container page">
+      <div class="section-head">
+        <h2>Fonctionnement</h2>
+        <p>Étapes possibles (selon la configuration).</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <h3>Acquisition</h3>
+            <p class="muted">Capteurs de flexion (ou caméra en option) pour récupérer l’information du geste.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <h3>Interprétation</h3>
+            <p class="muted">
+              Arduino mappe la flexion vers des angles (0–180). En option, Python classe le geste via Mediapipe + TensorFlow.
+            </p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <h3>Action</h3>
+            <p class="muted">Les servomoteurs adoptent les positions pour reproduire la forme/gestuelle.</p>
+          </div>
+        </li>
+      </ol>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Main Robotique</span>
+        <span class="muted">Site vitrine front-end en français</span>
+      </div>
+    </footer>
+  </body>
+</html>
+

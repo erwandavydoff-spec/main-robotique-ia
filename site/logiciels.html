@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Main Robotique | Logiciels</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Main Robotique</span>
+        </div>
+
+        <button class="icon-btn burger" type="button" aria-label="Ouvrir le menu" aria-controls="site-nav" aria-expanded="false">
+          <span class="burger__lines" aria-hidden="true"></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+          <a class="nav-link" href="./index.html">Accueil</a>
+          <a class="nav-link" href="./presentation.html">Présentation</a>
+          <a class="nav-link" href="./fonctionnement.html">Fonctionnement</a>
+          <a class="nav-link" href="./materiel.html">Matériel</a>
+          <a class="nav-link" href="./logiciels.html">Logiciels</a>
+          <a class="nav-link" href="./demo.html">Démo</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn theme-toggle" type="button" aria-label="Basculer le thème" title="Thème">
+            <span aria-hidden="true" class="theme-toggle__icon">☾</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenu" class="container page">
+      <div class="section-head">
+        <h2>Logiciels</h2>
+        <p>Partie “IA” et outils côté Python (option).</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Reconnaissance des gestes (option)</h3>
+          <p class="muted">
+            Le script utilise `opencv-python` (caméra), `mediapipe` (landmarks de la main) et `tensorflow`
+            pour charger un modèle et prédire le geste.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Bibliothèques clés</h3>
+          <ul class="list">
+            <li><span class="muted">`cv2` :</span> lecture et affichage webcam</li>
+            <li><span class="muted">`mediapipe` :</span> détection/coordonnées de la main</li>
+            <li><span class="muted">`tensorflow` :</span> inférence du modèle</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="callout">
+        <strong>Note :</strong> le pilotage des servos est décrit côté Arduino (capteurs flex). La caméra/IA peut enrichir la
+        suite selon les objectifs.
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Main Robotique</span>
+        <span class="muted">Site vitrine front-end en français</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
