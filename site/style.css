@@ -8,17 +8,17 @@ body {
     margin: 0px;
     background-color: rgb(31, 31, 75);
 
-    color: white;
+    color: aliceblue;
 }
 
 
 /*      NAVIGATION BAR     */
 .ball {
-    background-color: rgb(149, 178, 255);
+    background-color: rgb(125, 186, 255);
     width: 12px;
     height: 12px;
     border-radius: 50px;
-    border: 2px solid rgb(43, 96, 242);
+    border: 2px solid rgb(43, 149, 242);
 }
 
 
@@ -46,17 +46,17 @@ body {
 
 /* links */
 .navbar a{
-    color: rgb(214, 214, 214);
+    color: rgb(211, 218, 223);
     text-decoration: none;
+
+    background-color: rgb(22, 22, 46);
+    padding: 15px;
+    /* border: 2px solid black; */
+    border-radius: 60px;    
 }
 .navbar a:hover{
     background-color: rgb(31, 31, 86);
-}
-.link {
-    background-color: rgb(22, 22, 46);
-    padding: 10px;
-    /* border: 2px solid black; */
-    border-radius: 999px;    
+    color: aliceblue;
 }
 
 
@@ -65,12 +65,53 @@ body {
 
 .main-body {
     display: flex;
-    max-width: 40%;
+    flex-direction: column;
     flex-wrap: wrap;
-    border: 1px solid white;
-    height: auto;
+    /* border: 1px solid white; */
+    
+}
+
+.main-body-presentation {
+    max-width: 40%;
     padding: 2em;
 }
 
+.main-body p {
+    color: rgb(211, 218, 223);
+    font-size: 1.1em;
+}
+
+.main-body-box {
+
+    background-color: rgb(42, 42, 95);    
+
+    display: flex;
+    flex-direction: row; /* default */
+    
+    /* border: 1px solid white; */
+    border-radius: 20px;
+    
+    margin: 2em;
+    padding: 1.1em;
+    gap: 1em;
+
+    justify-content: center;
+
+    min-width: 100px;
+    min-height: 100px;
+}
 
 
+.main-body-box div{
+    
+    background-color: rgb(52, 52, 116);    
+    
+    /* border: 1px solid yellow; */
+    border-radius: 20px;
+
+    padding: 1em;
+
+    width: 100%;
+    /* min-width: 30%;
+    min-height: 30%; */
+}

@@ -15,18 +15,52 @@
             <span>Main Robotique</span>
 
 
-            <a class="link" href="">Accueil</a>
-            <a class="link" href="">Présentation</a>
-            <a class="link" href="">Fonctionement</a>
-            <a class="link" href="">Matériel</a>
+            <a href="">Accueil</a>
+            <!-- <a href="">Présentation</a> -->
+            <a href="">Fonctionement</a> 
+            <a style="margin-right: 40px;" href="">Matériel</a>
         </div>
         
         <div class="main-body">
 
-            <h1>Présentation</h1>
-            L’objectif est de contrôler une main articulée à partir des signaux de doigts (capteurs de flexion) et, en option, d’expérimenter la reconnaissance de gestes via caméra.
+            <div class="main-body-presentation">
+                <h1>Présentation</h1>
+                <p>
+                    Notre objectif avec ce projet est de reproduire et contrôler les 
+                    mouvements des doigts d’une main humaine sur une main robotique 
+                    articulée. Pour cela, nous utilisons des capteurs de flexion 
+                    (flex sensors) placés sur un gant afin de détecter les mouvements 
+                    des doigts et d’envoyer ces informations à un microcontrôleur. 
+                    Celui-ci commande ensuite des moteurs ou des servomoteurs pour 
+                    permettre à la main robotique de reproduire ces gestes en temps réel.
+                </p>
+            </div>
+            
+            
+            <div class="main-body-box">
+                <div>
+                    <h2>Ce que fait la main</h2>
+                    <p>
+                        Les capteurs mesurent la flexion de chaque doigt. 
+                        L’Arduino convertit ces valeurs en angles puis 
+                        pilote les servos.
+                    </p>
+                </div>
+                <div>
+                    <h2>Pourquoi c'est intéréssant</h2>
+                    <p>
+                        Un mélange “embarqué + IA” : lecture d’informations 
+                        (capteurs ou caméra) puis traduction en mouvements 
+                        mécaniques.
+                    </p>
+                </div>
 
-
+            </div>
         </div>
+
+        <hr>
+        <footer>
+            footer
+        </footer>
     </body>
 </html>
