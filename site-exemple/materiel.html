@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Main Robotique | Matériel</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Main Robotique</span>
+        </div>
+
+        <button class="icon-btn burger" type="button" aria-label="Ouvrir le menu" aria-controls="site-nav" aria-expanded="false">
+          <span class="burger__lines" aria-hidden="true"></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+          <a class="nav-link" href="./index.html">Accueil</a>
+          <a class="nav-link" href="./presentation.html">Présentation</a>
+          <a class="nav-link" href="./fonctionnement.html">Fonctionnement</a>
+          <a class="nav-link" href="./materiel.html">Matériel</a>
+          <a class="nav-link" href="./logiciels.html">Logiciels</a>
+          <a class="nav-link" href="./demo.html">Démo</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn theme-toggle" type="button" aria-label="Basculer le thème" title="Thème">
+            <span aria-hidden="true" class="theme-toggle__icon">☾</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenu" class="container page">
+      <div class="section-head">
+        <h2>Matériel</h2>
+        <p>Les éléments visibles dans le code embarqué.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card card--icon">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 7h16M7 7v14m10-14v14M9 11h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Capteurs de flexion</h3>
+          <p class="muted">5 entrées analogiques (ex. `A0` à `A4`) pour mesurer la flexion.</p>
+        </article>
+
+        <article class="card card--icon">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2v4m0 16v-4M2 12h4m16 0h-4M4.9 4.9l2.8 2.8m9.6 9.6 2.8 2.8M19.1 4.9l-2.8 2.8M7.7 16.3 4.9 19.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Servomoteurs</h3>
+          <p class="muted">5 servos pilotés avec des angles (0–180) via la bibliothèque `Servo`.</p>
+        </article>
+
+        <article class="card card--icon">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 6h13v14H8l-5-7 5-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M8 6v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Arduino</h3>
+          <p class="muted">Lecture analogique + conversion (mapping) + écriture des positions pour chaque servo.</p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Main Robotique</span>
+        <span class="muted">Site vitrine front-end en français</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
