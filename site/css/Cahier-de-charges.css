@@ -27,17 +27,22 @@ main div{
 .presentation p {
     max-width: 900px;
 }
+.presentation a{
+    color: aliceblue;
+    align-self: self-end;
+}
 
 
-.composants-besoin {
+.vertival-box-container {
     display: flex;
 
     align-self: center;
 }
 
-.composants-besoin div {
+.vertival-box-container div {
     max-width: 500px;
 
+    width: 50%;
     border-radius: 20px;
     background-color: rgb(47, 47, 107);
     padding: 2em;
