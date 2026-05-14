@@ -21,7 +21,9 @@ main div{
     border-radius: 20px;
     padding: 2em;
 
-    background-color: rgb(47, 47, 107);    
+    background-color: rgb(35, 47, 81);
+
+    border: 1px solid rgb(107, 114, 134);
 
 }
 .presentation p {
@@ -37,6 +39,8 @@ main div{
     display: flex;
 
     align-self: center;
+
+    
 }
 
 .vertival-box-container div {
@@ -44,8 +48,10 @@ main div{
 
     width: 50%;
     border-radius: 20px;
-    background-color: rgb(47, 47, 107);
+    background-color: rgb(35, 47, 81);
     padding: 2em;
+
+    border: 1px solid rgb(107, 114, 134);
 }
 
 
@@ -58,7 +64,9 @@ main div{
     align-self: center;
     padding: 2em;
     border-radius: 20px;
-    background-color: rgb(47, 47, 107);
+    background-color: rgb(35, 47, 81);
+
+    border: 1px solid rgb(107, 114, 134);
 }
 
 .resultat-attendu p {
