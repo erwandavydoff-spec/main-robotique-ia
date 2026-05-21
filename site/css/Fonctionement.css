@@ -19,10 +19,12 @@ main {
 }
 
 .box {
-    background-color: rgb(62, 62, 128);    
+    background-color: rgb(35, 47, 81);
     border-radius: 20px;
     display:flex;
     flex-direction: row;
+
+    border: 1px solid rgb(107, 114, 134);
 
     padding: 1em;
     gap: 1em;
@@ -32,7 +34,7 @@ main {
     justify-content: center;
     align-items: center;
 
-    background-color: rgb(47, 47, 107);    
+    background-color: rgb(59, 73, 111);
     border-radius: 20px;
     min-width: 60px;
     max-height: 60px;

@@ -1,0 +1,78 @@
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1em;
+
+    padding: 1em;
+}
+main div{
+    margin: 1em;
+}
+
+.presentation {
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+
+    align-self: center;
+    border-radius: 20px;
+    padding: 2em;
+
+    background-color: rgb(35, 47, 81);
+
+    border: 1px solid rgb(107, 114, 134);
+
+}
+.presentation p {
+    max-width: 900px;
+}
+.presentation a{
+    color: aliceblue;
+    align-self: self-end;
+}
+
+
+.vertival-box-container {
+    display: flex;
+
+    align-self: center;
+
+    
+}
+
+.vertival-box-container div {
+    max-width: 500px;
+
+    width: 50%;
+    border-radius: 20px;
+    background-color: rgb(35, 47, 81);
+    padding: 2em;
+
+    border: 1px solid rgb(107, 114, 134);
+}
+
+
+.resultat-attendu {
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+
+    align-self: center;
+    padding: 2em;
+    border-radius: 20px;
+    background-color: rgb(35, 47, 81);
+
+    border: 1px solid rgb(107, 114, 134);
+}
+
+.resultat-attendu p {
+    max-width: 900px;
+}
+
+
+
+

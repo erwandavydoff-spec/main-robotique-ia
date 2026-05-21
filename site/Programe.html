@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>Main Robotique | Programe</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/Accueil.css">
+        <link rel="stylesheet" href="css/Programe.css">
     </head>
     <body>
         
@@ -16,14 +16,43 @@
             <span>Main Robotique</span>
 
 
-            <a href="Accueil.html">Accueil</a>  <!-- Présentation -->
+            <a href="index.html">Accueil</a>  <!-- Présentation -->
             <a href="Fonctionemment.html">Fonctionement</a> <!-- materiel + fonctionement -->
             <a href="Programe.html">Programe</a> 
             <a style="margin-right: 40px;" href="Cahier-de-charges.html">Cahier de charges</a>
         </header>
         
-        <main class="main-body">
+        <main>
+            <h1>Programe - Boucle Temps Réel</h1>
 
+            <div class="horisontal-box">
+                
+                <div class="vertical-box">
+                    <div id="loop-description">loop() - ~20ms par cycle</div>
+
+                    <ol id="list">
+                        <li>Lecture ADC — capteurs flex + EMG</li>
+                        <li>Récupération geste caméra IA</li>
+                        <li>Filtrage & lissage des valeurs brutes</li>
+                        <li>Fusion des 3 sources de données</li>
+                        <li>Conversion → angles moteurs</li>
+                        <li>Envoi PWM aux 5 servomoteurs</li>
+                    </ol>
+                </div>
+
+                <div class="vertical-box" id="boxes">
+                    
+                    <div>ADC Flex ×5</div>
+                    <div>ADC EMG</div>
+                    <div>Caméra IA</div>
+                    <div>Fusion</div>
+                    <div>Filtrage</div>
+                    <div>→ Angles</div>
+                    <div>PWM ×5</div>
+
+                    
+                </div>
+            </div>
             
         </main>
 
