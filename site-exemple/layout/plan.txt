@@ -1,9 +1,0 @@
-Landing page -> présentation du projet (FR)
-
-Sections :
-- Présentation
-- Fonctionnement
-- Matériel
-- Logiciels (IA option : Mediapipe + TensorFlow)
-- Démo (capture depuis `docs/`)
-- Contact (formulaire front-end via `mailto`)
