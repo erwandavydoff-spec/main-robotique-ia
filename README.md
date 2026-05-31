@@ -9,6 +9,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-3b82f6?style=flat-square&logo=python&logoColor=white)](.)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-AI%20Vision-10b981?style=flat-square&logo=google&logoColor=white)](.)
 [![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-ef4444?style=flat-square&logo=opencv&logoColor=white)](.)
+[![EMG](https://img.shields.io/badge/EMG-MyoWare%202.0-a855f7?style=flat-square)](.)
 [![License](https://img.shields.io/badge/License-Open%20Source-8b5cf6?style=flat-square)](.)
 
 </div>
