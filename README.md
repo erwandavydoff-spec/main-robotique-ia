@@ -23,10 +23,6 @@ A camera captures the user's hand. MediaPipe detects 21 3D landmarks on it. Pyth
 
 No cloud. No external API. Everything runs locally on consumer hardware.
 
-```
-Webcam  ──►  MediaPipe (21 landmarks)  ──►  Python (angle mapping)  ──►  ESP32 (PWM)  ──►  Robotic Hand
-```
-
 > **Current state:** the full pipeline is operational end-to-end. The hand successfully replicates gestures captured by the camera in real time. Active work is focused on latency reduction, mechanical refinement, and auto-calibration.
 
 ---
@@ -46,32 +42,62 @@ Webcam  ──►  MediaPipe (21 landmarks)  ──►  Python (angle mapping)  
 
 ## System Architecture
 
+### Full pipeline
+
+```mermaid
+flowchart LR
+    A[📷 Webcam] --> B[OpenCV\nCapture]
+    B --> C[MediaPipe\n21 Landmarks]
+    C --> D[Python\nAngle Mapping]
+    D -->|USB Serial\n115200 baud| E[ESP32\nFirmware]
+    E --> F[5× Servo\nMotors]
+    F --> G[🤖 Robotic\nHand]
+
+    style A fill:#1e293b,stroke:#0ea5e9,color:#fff
+    style B fill:#1e293b,stroke:#0ea5e9,color:#fff
+    style C fill:#1e293b,stroke:#10b981,color:#fff
+    style D fill:#1e293b,stroke:#3b82f6,color:#fff
+    style E fill:#1e293b,stroke:#f59e0b,color:#fff
+    style F fill:#1e293b,stroke:#f59e0b,color:#fff
+    style G fill:#1e293b,stroke:#8b5cf6,color:#fff
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│  LAYER 1 — VISION & AI                                           │
-│                                                                  │
-│  Webcam ──► OpenCV (frame capture) ──► MediaPipe Hands           │
-│                                         └─ 21 landmarks (x,y,z) │
-└──────────────────────────────────┬───────────────────────────────┘
-                                   │
-                                   ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  LAYER 2 — PROCESSING (Python)                                   │
-│                                                                  │
-│  Landmark array ──► Per-finger angle computation                 │
-│                     └─ Normalize 0–180° range                    │
-│                     └─ Serialize: "S1:90,S2:45,S3:120,..."       │
-│                     └─ PySerial write over USB/UART              │
-└──────────────────────────────────┬───────────────────────────────┘
-                                   │  USB / UART  115200 baud
-                                   ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  LAYER 3 — EMBEDDED (ESP32)                                      │
-│                                                                  │
-│  Serial parser ──► Command frame decode                          │
-│                    └─ 5× PWM output (one per finger)             │
-│                    └─ SG90 / MG996R servo actuation              │
-└──────────────────────────────────────────────────────────────────┘
+
+### Layer breakdown
+
+```mermaid
+flowchart TB
+    subgraph L1["🧠 Layer 1 — Vision & AI"]
+        A[Webcam] --> B[OpenCV\nframe capture]
+        B --> C[MediaPipe Hands\n21 landmarks x,y,z]
+    end
+
+    subgraph L2["⚙️ Layer 2 — Processing · Python"]
+        D[Landmark array] --> E[Per-finger\nangle computation]
+        E --> F[Normalize 0–180°]
+        F --> G[Serialize command\nS1:90,S2:45,...]
+        G --> H[PySerial write]
+    end
+
+    subgraph L3["🔌 Layer 3 — Embedded · ESP32"]
+        I[UART reception] --> J[Command\nframe parser]
+        J --> K[5× PWM output]
+        K --> L[SG90 / MG996R\nservo actuation]
+    end
+
+    L1 --> L2
+    L2 -->|USB / UART| L3
+```
+
+### Finger angle computation
+
+```mermaid
+flowchart LR
+    A[Landmark 0\nWrist] --> D[Vector\ncomputation]
+    B[Landmark MCP\nKnuckle] --> D
+    C[Landmark TIP\nFingertip] --> D
+    D --> E[Flexion angle\n0° – 180°]
+    E --> F[PWM value\n500 – 2400 µs]
+    F --> G[Servo position]
 ```
 
 ---
@@ -223,7 +249,40 @@ python tests/latency_benchmark.py
 
 ## Provisional Development Planning
 
-The project follows a phased delivery model. Each phase has a clear objective, defined deliverables, and a realistic timeline based on current progress.
+### Roadmap overview
+
+```mermaid
+gantt
+    title Main Robotique IA — Development Roadmap
+    dateFormat  YYYY-MM-DD
+    section Phase 1 · Core Pipeline
+    MediaPipe integration          :done,    p1a, 2025-01-01, 2025-02-15
+    ESP32 firmware                 :done,    p1b, 2025-01-15, 2025-02-28
+    Python serial bridge           :done,    p1c, 2025-02-01, 2025-03-10
+    End-to-end functional test     :done,    p1d, 2025-03-01, 2025-03-20
+
+    section Phase 2 · Performance
+    Latency profiling              :active,  p2a, 2025-03-20, 2025-04-30
+    Frame rate optimization        :active,  p2b, 2025-04-01, 2025-05-15
+    Serial error handling          :         p2c, 2025-04-15, 2025-05-30
+    Stress testing                 :         p2d, 2025-05-15, 2025-06-15
+
+    section Phase 3 · Mechanics
+    Finger & joint 3D models       :active,  p3a, 2025-04-01, 2025-06-01
+    Palm base plate                :         p3b, 2025-05-15, 2025-06-30
+    Servo mounting integration     :         p3c, 2025-06-01, 2025-07-15
+    Full mechanical test           :         p3d, 2025-07-01, 2025-07-31
+
+    section Phase 4 · Calibration & Modes
+    Auto servo calibration         :         p4a, 2025-07-15, 2025-08-15
+    Preset gesture mode            :         p4b, 2025-08-01, 2025-08-31
+    Sequence playback mode         :         p4c, 2025-08-15, 2025-09-15
+
+    section Phase 5 · Interface & Release
+    Visualization overlay          :         p5a, 2025-09-01, 2025-09-30
+    Full documentation             :         p5b, 2025-09-01, 2025-10-15
+    Demo video + v1.0 release      :         p5c, 2025-10-01, 2025-10-31
+```
 
 ---
 
@@ -287,37 +346,34 @@ The project follows a phased delivery model. Each phase has a clear objective, d
 
 ---
 
-### Phase 5 — Interface & Documentation — Est. September 2025
+### Phase 5 — Interface & Documentation — Est. October 2025
 
-**Objective:** Make the project accessible and demo-ready.
+**Objective:** Make the project accessible and demo-ready for v1.0 release.
 
 | Task | Status |
 |------|--------|
-| Real-time visualization overlay (landmarks + servo state) | 📋 Planned |
-| Web dashboard (optional) | 📋 Planned |
+| Real-time visualization overlay | 📋 Planned |
 | Complete technical documentation | 📋 Planned |
 | Assembly video | 📋 Planned |
-| Demo video (v1.0 release) | 📋 Planned |
+| Demo video + v1.0 release | 📋 Planned |
 
 ---
 
-### Summary
+### Progress summary
 
 ```
-Phase 1 — Core Pipeline      ████████████████████  ✅ Done
-Phase 2 — Performance        ████████░░░░░░░░░░░░  🔄 ~40%   Est. June 2025
-Phase 3 — Mechanics          ███░░░░░░░░░░░░░░░░░  🔄 ~15%   Est. July 2025
-Phase 4 — Calibration        ░░░░░░░░░░░░░░░░░░░░  📋 Planned Est. Aug. 2025
-Phase 5 — Interface & Docs   ░░░░░░░░░░░░░░░░░░░░  📋 Planned Est. Sep. 2025
+Phase 1 · Core Pipeline     ████████████████████  ✅ 100%
+Phase 2 · Performance       ████████░░░░░░░░░░░░  🔄  40%   Est. Jun 2025
+Phase 3 · Mechanics         ███░░░░░░░░░░░░░░░░░  🔄  15%   Est. Jul 2025
+Phase 4 · Calibration       ░░░░░░░░░░░░░░░░░░░░  📋   0%   Est. Aug 2025
+Phase 5 · Interface & Docs  ░░░░░░░░░░░░░░░░░░░░  📋   0%   Est. Oct 2025
 ```
 
 ---
 
 ## Contributing
 
-Contributions are welcome. Please open an issue before submitting a pull request so that changes can be discussed first.
-
-When contributing, follow the existing code structure, document any new module, and include a test if applicable.
+Contributions are welcome. Please open an issue before submitting a pull request so that changes can be discussed first. When contributing, follow the existing code structure, document any new module, and include a test if applicable.
 
 ---
 
