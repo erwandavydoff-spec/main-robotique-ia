@@ -1,6 +1,6 @@
 <div align="center">
 
-# Main Robotique IA
+![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=220&section=header&text=Main%20Robotique%20IA&fontSize=52&fontColor=fff&animation=fadeIn&fontAlignY=38&desc=Open-source%20robotic%20hand%20%C2%B7%20AI%20%C2%B7%20ESP32%20%C2%B7%20Real-Time&descAlignY=58&descSize=17)
 
 **Open-source robotic hand controlled by real-time AI hand tracking**
 
@@ -249,131 +249,51 @@ python tests/latency_benchmark.py
 
 ## Provisional Development Planning
 
-### Roadmap overview
+The full development planning is available as a structured Excel file with three sheets: **Planning Général** (all phases and tasks), **Gantt Chart** (visual Jan → Oct 2025 timeline), and **Tâches Détaillées** (26 numbered tasks with technical notes).
+
+📥 **[Download Planning_MainRobotiqueIA.xlsx](./docs/Planning_MainRobotiqueIA.xlsx)**
+
+---
+
+### Roadmap
 
 ```mermaid
 gantt
-    title Main Robotique IA — Development Roadmap
+    title Main Robotique IA — Development Roadmap 2025
     dateFormat  YYYY-MM-DD
     section Phase 1 · Core Pipeline
-    MediaPipe integration          :done,    p1a, 2025-01-01, 2025-02-15
-    ESP32 firmware                 :done,    p1b, 2025-01-15, 2025-02-28
-    Python serial bridge           :done,    p1c, 2025-02-01, 2025-03-10
-    End-to-end functional test     :done,    p1d, 2025-03-01, 2025-03-20
-
+    MediaPipe integration          :done,    2025-01-01, 2025-02-15
+    ESP32 firmware                 :done,    2025-01-15, 2025-02-28
+    Python serial bridge           :done,    2025-02-01, 2025-03-10
+    End-to-end functional test     :done,    2025-03-01, 2025-03-20
     section Phase 2 · Performance
-    Latency profiling              :active,  p2a, 2025-03-20, 2025-04-30
-    Frame rate optimization        :active,  p2b, 2025-04-01, 2025-05-15
-    Serial error handling          :         p2c, 2025-04-15, 2025-05-30
-    Stress testing                 :         p2d, 2025-05-15, 2025-06-15
-
+    Latency profiling              :active,  2025-03-20, 2025-04-30
+    Frame rate optimization        :active,  2025-04-01, 2025-05-15
+    Serial error handling          :active,  2025-04-15, 2025-05-30
+    Servo jitter & latency <50ms   :         2025-05-01, 2025-06-15
     section Phase 3 · Mechanics
-    Finger & joint 3D models       :active,  p3a, 2025-04-01, 2025-06-01
-    Palm base plate                :         p3b, 2025-05-15, 2025-06-30
-    Servo mounting integration     :         p3c, 2025-06-01, 2025-07-15
-    Full mechanical test           :         p3d, 2025-07-01, 2025-07-31
-
+    Finger & joint 3D models       :active,  2025-04-01, 2025-06-01
+    Palm base plate                :active,  2025-05-01, 2025-06-30
+    Servo mounting + tendons       :         2025-06-01, 2025-07-31
+    Printable STL release          :         2025-08-01, 2025-08-15
     section Phase 4 · Calibration & Modes
-    Auto servo calibration         :         p4a, 2025-07-15, 2025-08-15
-    Preset gesture mode            :         p4b, 2025-08-01, 2025-08-31
-    Sequence playback mode         :         p4c, 2025-08-15, 2025-09-15
-
+    Auto servo calibration         :         2025-07-15, 2025-08-15
+    Preset & sequence modes        :         2025-08-01, 2025-09-30
     section Phase 5 · Interface & Release
-    Visualization overlay          :         p5a, 2025-09-01, 2025-09-30
-    Full documentation             :         p5b, 2025-09-01, 2025-10-15
-    Demo video + v1.0 release      :         p5c, 2025-10-01, 2025-10-31
+    Visualization overlay          :         2025-09-01, 2025-09-30
+    Full documentation             :         2025-09-01, 2025-10-15
+    Demo video + v1.0 release      :milestone, 2025-10-31, 2025-10-31
 ```
-
----
-
-### Phase 1 — Core Pipeline ✅ Complete
-
-**Objective:** Establish the full signal chain from camera to servo motor.
-
-| Task | Status |
-|------|--------|
-| MediaPipe hand landmark detection | ✅ Done |
-| Per-finger angle computation | ✅ Done |
-| Python serial command encoding | ✅ Done |
-| ESP32 firmware — UART reception | ✅ Done |
-| ESP32 firmware — 5-channel PWM | ✅ Done |
-| End-to-end functional test | ✅ Done |
-
-**Result:** The hand successfully replicates live camera gestures. The full pipeline is operational.
-
----
-
-### Phase 2 — Stability & Performance 🔄 In Progress — Est. June 2025
-
-**Objective:** Make the system reliable and responsive enough for continuous use.
-
-| Task | Status |
-|------|--------|
-| Latency profiling per pipeline stage | 🔄 In Progress |
-| Frame rate optimization (target 30+ fps) | 🔄 In Progress |
-| Serial communication error handling | 🔄 In Progress |
-| Servo jitter reduction | 📋 Planned |
-| End-to-end latency < 50 ms | 📋 Planned |
-| Stress test (30 min continuous operation) | 📋 Planned |
-
----
-
-### Phase 3 — Mechanical Assembly 🔄 In Progress — Est. July 2025
-
-**Objective:** Deliver a complete, printable mechanical hand with documented assembly.
-
-| Task | Status |
-|------|--------|
-| Individual finger design (phalanges + joints) | 🔄 In Progress |
-| Palm base plate | 🔄 In Progress |
-| Servo mounting integration | 📋 Planned |
-| Tendon / cable routing system | 📋 Planned |
-| Full assembly test with electronics | 📋 Planned |
-| Printable STL release | 📋 Planned |
-
----
-
-### Phase 4 — Calibration & Control Modes — Est. August 2025
-
-**Objective:** Add automatic calibration and extend control beyond simple mirroring.
-
-| Task | Status |
-|------|--------|
-| Automatic servo range calibration | 📋 Planned |
-| Preset gesture mode (rock, paper, scissors…) | 📋 Planned |
-| Sequence / animation playback mode | 📋 Planned |
-| Configuration file support | 📋 Planned |
-
----
-
-### Phase 5 — Interface & Documentation — Est. October 2025
-
-**Objective:** Make the project accessible and demo-ready for v1.0 release.
-
-| Task | Status |
-|------|--------|
-| Real-time visualization overlay | 📋 Planned |
-| Complete technical documentation | 📋 Planned |
-| Assembly video | 📋 Planned |
-| Demo video + v1.0 release | 📋 Planned |
-
----
 
 ### Progress summary
 
-```
-Phase 1 · Core Pipeline     ████████████████████  ✅ 100%
-Phase 2 · Performance       ████████░░░░░░░░░░░░  🔄  40%   Est. Jun 2025
-Phase 3 · Mechanics         ███░░░░░░░░░░░░░░░░░  🔄  15%   Est. Jul 2025
-Phase 4 · Calibration       ░░░░░░░░░░░░░░░░░░░░  📋   0%   Est. Aug 2025
-Phase 5 · Interface & Docs  ░░░░░░░░░░░░░░░░░░░░  📋   0%   Est. Oct 2025
-```
-
----
-
-## Contributing
-
-Contributions are welcome. Please open an issue before submitting a pull request so that changes can be discussed first. When contributing, follow the existing code structure, document any new module, and include a test if applicable.
+| Phase | Objective | Progress | ETA |
+|-------|-----------|----------|-----|
+| Phase 1 · Core Pipeline | Camera → AI → ESP32 → Hand | ✅ 100% | Done |
+| Phase 2 · Performance | Latency < 50ms, 30+ fps | 🔄 40% | Jun 2025 |
+| Phase 3 · Mechanics | Printable 3D hand assembly | 🔄 15% | Jul 2025 |
+| Phase 4 · Calibration | Auto-calibration, control modes | 📋 0% | Aug 2025 |
+| Phase 5 · Interface & Release | Visualization, docs, v1.0 | 📋 0% | Oct 2025 |
 
 ---
 
@@ -393,4 +313,6 @@ Distributed under an open-source license. Free to use for educational and experi
 
 <div align="center">
 <sub>Main Robotique IA — real-time interaction between artificial intelligence and robotic systems.</sub>
+
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer)
 </div>
